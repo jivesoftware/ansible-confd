@@ -1,0 +1,13 @@
+---
+- name: download confd
+  get_url: url={{confd_download}} dest={{confd_home}}
+  register: confd_was_downloaded
+  
+- name: Create confd directory
+  file: "state=directory path={{confd_config}}"
+
+- name: Create confd conf.d directory
+  file: "state=directory path={{confd_config}}/conf.d"
+
+- name: Create confd templates directory
+  file: "state=directory path={{confd_config}}/templates"
