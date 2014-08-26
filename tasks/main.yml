@@ -1,7 +1,9 @@
 ---
 - name: download confd
-  get_url: url={{confd_download}} dest={{confd_home}}
-  register: confd_was_downloaded
+  get_url: "url={{confd_download}} dest={{confd_home}}/confd"
+
+- name: change confd permissions
+  file: "path={{confd_home}}/confd mode=0755"
   
 - name: Create confd directory
   file: "state=directory path={{confd_config}}"
